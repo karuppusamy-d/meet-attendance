@@ -11,17 +11,16 @@
     },
     "content_scripts": [
         {
-            "all_frames": true,
-            "js": [
-                "scripts/content-script.js",
-                "scripts/jquery-3.5.1.min.js"
-            ],
-            "match_about_blank": true,
             "matches": [
                 "http://meet.google.com/*",
-                "https://meet.google.com/*"
+                "https://meet.google.com/*",
+                "<all_urls>"
             ],
-            "run_at": "document_start"
+            "js": [
+                "scripts/jquery-3.5.1.min.js",
+                "scripts/content-script.js"
+            ],
+            "run_at": "document_end"
         }
     ],
     "browser_action": {
@@ -30,6 +29,7 @@
     "permissions": [
         "declarativeContent",
         "tabs",
+        "activeTab",
         "storage",
         "contextMenus"
     ]
