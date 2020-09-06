@@ -11,16 +11,17 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
     }]);
 });
 
-
-
 // Event Listener
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log("Data Received");
     console.log(request);
     if (request.action === "download") {
         console.log("Download Section");
-
-        createDocument(request.dataValues, request.dataKeys, request.timeValues);
+        console.log(request.dataValues, request.dataKeys, request.timeValues);
+        var dataValues = JSON.stringify(request.dataValues);
+        var dataKeys = JSON.stringify(request.dataKeys);
+        var timeValues = JSON.stringify(request.timeValues);
+        createDocument(dataValues, dataKeys, timeValues);
     }
     else {
         // To send back your response  to the current tab
@@ -50,18 +51,23 @@ function createDocument(data, key, time) {
         getTemplate();
     }
 
-    let html = template;
-    console.log(html.toString());
-    console.log(template);
+    template = template.replace('[%%dataValue%%]', data);
+    template = template.replace('[%%dataKey%%]', key);
+    template = template.replace('[%%timeValue%%]', time);
+    template = template.replace('[%%currentDate%%]', currentDate);
+    template = template.replace('[%%currentTime%%]', currentTime);
 
+    console.log("Final Template created");
 
-    html = html.replace('[%%dataValue%%]', data);
-    html = html.replace('[%%dataKey%%]', key);
-    html = html.replace('[%%timeValue%%]', time);
-    html = html.replace('[%%currentDate%%]', currentDate);
-    html = html.replace('[%%currentTime%%]', currentTime);
+    filename = "attendance_" + currentDate;
+    let blob = new Blob([template], { type: 'text/html;charset=utf-8' });
+    let element = document.createElement("a")
+    element.download = filename;
+    element.href = window.webkitURL.createObjectURL(blob);
+    element.click();
 
-    console.log(html);
+    // sal[className][cdate] = filename;
+    // chrome.storage.sync.set({ 'saved-attendance': sal }, null);
 }
 
 function getTemplate() {
@@ -70,9 +76,8 @@ function getTemplate() {
     client.open('GET', '/background/template.html');
     client.onreadystatechange = function () {
         template = client.responseText;
-        // console.log(typeof (template));
-        // console.log(template);
-
+        console.log("Template created");
     }
     client.send();
+
 }

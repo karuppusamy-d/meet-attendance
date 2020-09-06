@@ -24,12 +24,12 @@
             text-align: center;
         }
     </style>
-    <script type="text/javascript">
-        let _data = "[%%dataValue%%]";
-        let _dataKey = "[%%dataKey%%]";
-        let _time = "[%%timeValue%%]";
-        let _date = "[%%currentDate%%]";
-        let _time = "[%%currentTime%%]";
+    <script type='text/javascript'>
+        var _data = '[%%dataValue%%]';
+        var _dataKey = '[%%dataKey%%]';
+        var _timeValue = '[%%timeValue%%]';
+        var _date = '[%%currentDate%%]';
+        var _time = '[%%currentTime%%]';
     </script>
 </head>
 
@@ -51,15 +51,18 @@
         </tr>
     </table>
 
-    <script>
-        date = document.getElementById("date");
-        date.innerText = "Date:" + _date;
-        time = document.getElementById("time");
-        time.innerText = "Time:" + _time;
+    <h3 style="background-color: red;">Work is in bending</h3>
 
-        for (let i of data) {
-            let id = i.id, name = i.name;
-            console.log(id, name);
+    <script>
+        date = document.getElementById("date").innerText = "Date:" + _date;
+        time = document.getElementById("time").innerText = "Time:" + _time;
+
+        var data = JSON.parse(_data);
+        var key = JSON.parse(_dataKey);
+        var timeValues = JSON.parse(_timeValue);
+
+        for (let i of _data) {
+            console.log(i);
         }
     </script>
 
