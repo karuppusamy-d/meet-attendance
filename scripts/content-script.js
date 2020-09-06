@@ -1,6 +1,10 @@
+console.log("Content script loaded");
+
 // Global Variables
-var dataStorage = {};   // Data Variable
-var interval_id;        // For start and stop Monitoring
+var dataStorage = {};       // Data Variable
+var participantKeys = [];   // For Key Storage
+var timeStamp = [];         // For Time Storage
+var interval_id;            // For start and stop Monitoring
 
 // For Push to Talk Feature
 $(document).keydown(function (event) {
@@ -15,7 +19,7 @@ $(document).keydown(function (event) {
     }
 });
 
-// Function for Fetching List of Participants
+// Function to Fetch List of Participants
 function getListOfParticipants() {
     let data = [];
     for (let i of $("[data-participant-id], [data-requested-participant-id]")) {
@@ -27,44 +31,89 @@ function getListOfParticipants() {
         let obj = { "name": name, "id": id }
         data.push(obj);
     }
+    // console.log(data);
     return data;
 }
 
-// Function for Loging Participants data with TimeStamp
+// Function to Log Participants data with TimeStamp
 function logParticipantsData() {
     let now = new Date();
     let currentTime = now.getHours() + ':' + now.getMinutes().toString();
-    // let meeting_id = (document.querySelector('[data-unresolved-meeting-id]').getAttribute('data-unresolved-meeting-id')).toString();
+    // let meeting_id = $("[data-unresolved-meeting-id]").getAttribute('data-unresolved-meeting-id').toString();
     let data = getListOfParticipants();
     for (let i of data) {
         let id = i.id;
         if (dataStorage[id] == undefined) {
             dataStorage[id] = i;
         }
-        let timeStamp = dataStorage[id]["timeStamp"] || [];
+        if (!participantKeys.includes(id)) {
+            participantKeys.push(id);
+        }
+        let time = dataStorage[id]["timeStamp"] || [];
+        time.push(currentTime);
         timeStamp.push(currentTime);
-        dataStorage[id]["timeStamp"] = timeStamp;
+        dataStorage[id]["timeStamp"] = time;
     }
     console.log(dataStorage);
 }
 
-// Function for Start Monitoring
+// Function to Start Monitoring
 function startMonitoring(time = 300000) {
     stopMonitoring();
     interval_id = setInterval(function () {
         logParticipantsData();
     }, time);
+    console.log('started');
 }
 
-// Function for Stop Monitoring
+// Function to Stop Monitoring
 function stopMonitoring() {
     if (!(interval_id == undefined)) {
         clearInterval(interval_id);
         interval_id = undefined;
     }
+    console.log('stoped');
 }
 
-// Function for clearing dataStorage
+// Function to send data
+function sendData() {
+    chrome.runtime.sendMessage({ action: "download", dataValues: dataStorage, dataKeys: participantKeys, timeValues: timeStamp }, res => {
+        console.log(res);
+    });
+    console.log('data sent');
+}
+
+// Function to clear dataStorage
 function clearData() {
     dataStorage = {};
+    participantKeys = [];
+    timeStamp = [];
+    console.log('cleared');
 }
+
+
+// Event Listiner
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.log(request);
+    let action = request.action;
+    if (action === "start") {
+        let delay = request.delay;
+        delay = parseInt(delay);
+        if (isNaN(delay)) {
+            delay = 5;
+        }
+        let t_mil = delay * 60000;
+
+        startMonitoring(t_mil);
+    }
+    else if (action === "stop") {
+        stopMonitoring();
+    }
+    else if (action === "save") {
+        sendData();
+    }
+    else if (action == "reset") {
+        clearData();
+    }
+    sendResponse("Received by Content Script");
+})

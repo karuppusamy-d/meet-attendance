@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -8,15 +8,20 @@
 </head>
 
 <body>
-    <button>Button 1</button>
-    <button>Button 2</button>
-    <button>Button 3</button>
-    <button>Button 4</button>
+    <div>
+        <div>Time: <span id="timeText">5</span></div>
+        <input id="time" type="range" min="1" max="100" value="5">
+    </div>
 
-    <script type="text/javascript" src="popup.js"></script>
+    <div>
+        <button id="start">Start Capturing</button>
+        <button id="stop">Stop Capturing</button>
+        <button id="save">Save</button>
+        <button id="reset">Reset</button>
+
+    </div>
+
     <script type="text/javascript" src="../scripts/jquery-3.5.1.min.js"></script>
-
-</body>
-
+    <script type="text/javascript" src="popup.js"></script>
 
 </html>

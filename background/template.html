@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        let _data = "[%%dataValue%%]";
+        let _dataKey = "[%%dataKey%%]";
+        let _time = "[%%timeValue%%]";
+        let _date = "[%%currentDate%%]";
+        let _time = "[%%currentTime%%]";
+    </script>
+</head>
+
+<body>
+
+    <h2>Google Meet Attence</h2>
+    <h3 id="date"></h3>
+    <h3 id="time"></h3>
+    <table id="table">
+        <tr id="headder">
+            <th>ID</th>
+            <th>NAME</th>
+            <th>TIME</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Your Name</td>
+            <td>12:00</td>
+        </tr>
+    </table>
+
+    <script>
+        date = document.getElementById("date");
+        date.innerText = "Date:" + _date;
+        time = document.getElementById("time");
+        time.innerText = "Time:" + _time;
+
+        for (let i of data) {
+            let id = i.id, name = i.name;
+            console.log(id, name);
+        }
+    </script>
+
+</body>
+
+</html>

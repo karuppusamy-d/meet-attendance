@@ -27,10 +27,12 @@
         "default_popup": "popup/popup.html"
     },
     "permissions": [
+        "<all_urls>",
         "declarativeContent",
         "tabs",
         "activeTab",
         "storage",
-        "contextMenus"
+        "contextMenus",
+        "downloads"
     ]
 }
