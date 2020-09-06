@@ -1,3 +1,5 @@
+console.log("Background Script loaded");
+
 // For Declearative Content
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
     chrome.declarativeContent.onPageChanged.addRules([{
@@ -9,7 +11,7 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
     }]);
 });
 
-console.log("Background Script loaded");
+
 
 // Event Listener
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -33,6 +35,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 }
 );
 
+// Variable for Template
+var template = "";
+
 // function for HTML Creation
 function createDocument(data, key, time) {
     console.log("creating html");
@@ -41,7 +46,15 @@ function createDocument(data, key, time) {
     let currentTime = now.getHours() + ':' + (now.getMinutes().toString());
     let currentDate = now.getFullYear() + '-' + (now.getMonth() + 1).toString() + '-' + now.getDate().toString();
 
-    let html = getTemplate();
+    if (template === "") {
+        getTemplate();
+    }
+
+    let html = template;
+    console.log(html.toString());
+    console.log(template);
+
+
     html = html.replace('[%%dataValue%%]', data);
     html = html.replace('[%%dataKey%%]', key);
     html = html.replace('[%%timeValue%%]', time);
@@ -52,15 +65,14 @@ function createDocument(data, key, time) {
 }
 
 function getTemplate() {
-    var template = "";
+
     var client = new XMLHttpRequest();
     client.open('GET', '/background/template.html');
     client.onreadystatechange = function () {
         template = client.responseText;
-        console.log(template);
+        // console.log(typeof (template));
+        // console.log(template);
 
     }
     client.send();
-
-    return template.toString();
 }
