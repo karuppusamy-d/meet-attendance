@@ -66,8 +66,6 @@ function createDocument(data, key, time) {
     element.href = window.webkitURL.createObjectURL(blob);
     element.click();
 
-    // sal[className][cdate] = filename;
-    // chrome.storage.sync.set({ 'saved-attendance': sal }, null);
 }
 
 function getTemplate() {

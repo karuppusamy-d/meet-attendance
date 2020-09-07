@@ -39,30 +39,41 @@
     <h3 id="date"></h3>
     <h3 id="time"></h3>
     <table id="table">
-        <tr id="headder">
+        <tr id="headings">
             <th>ID</th>
-            <th>NAME</th>
-            <th>TIME</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Your Name</td>
-            <td>12:00</td>
+            <th>Name</th>
         </tr>
     </table>
 
-    <h3 style="background-color: red;">Work is in bending</h3>
+    <h3 style="background-color: red;">Work is in pending</h3>
 
     <script>
         date = document.getElementById("date").innerText = "Date:" + _date;
         time = document.getElementById("time").innerText = "Time:" + _time;
+        var headings = document.getElementById("headings");
+        var table = document.getElementById("table");
+
 
         var data = JSON.parse(_data);
         var key = JSON.parse(_dataKey);
         var timeValues = JSON.parse(_timeValue);
 
-        for (let i of _data) {
-            console.log(i);
+        // Time Value Update
+        for (let el of timeValues) {
+            headings.innerHTML += '<th>' + el + '</th>\n';
+        }
+
+        // Data Value Update
+        for (let el of key) {
+            console.log(data[el].name);
+            let id = '<td>' + data[el].id + '</td>';
+            let name = '<td>' + data[el].name + '</td>';
+            let t = data[el].timeStamp;
+            let tdata = "";
+            for (let i of t) {
+                tdata += '<td>' + i + '</td>';
+            }
+            table.innerHTML += '<tr>' + id + name + tdata + '</tr>';
         }
     </script>
 
