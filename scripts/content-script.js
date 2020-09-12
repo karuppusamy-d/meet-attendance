@@ -1,10 +1,9 @@
-console.log("Content script loaded");
-
 // Global Variables
 var dataStorage = {};       // Data Variable
 var participantNames = [];   // For Key Storage
 var timeStamp = [];         // For Time Storage
 var interval_id;            // For start and stop Monitoring
+var meetingId;             // For storing Meeting ID
 
 // For Push to Talk Feature
 $(document).keydown(function (event) {
@@ -28,10 +27,12 @@ function getListOfParticipants() {
         if (name == "You") {
             continue;
         }
-        let obj = { "name": name, "id": id }
-        data.push(obj);
+        // Remove Unnecessary things from name
+        name = name.replace('\n', '');
+        name = name.replace('Hide Participant', '');
+        name = name.trim();
+        data.push(name);
     }
-    // console.log(data);
     return data;
 }
 
@@ -39,29 +40,49 @@ function getListOfParticipants() {
 function logParticipantsData() {
     let now = new Date();
     let currentTime = now.getHours() + ':' + now.getMinutes().toString();
-    // let meeting_id = $("[data-unresolved-meeting-id]").getAttribute('data-unresolved-meeting-id').toString();
-    let data = getListOfParticipants();
-    for (let i of data) {
-        let id = i.id;
-        if (dataStorage[id] == undefined) {
-            dataStorage[id] = i;
-        }
-        if (!participantKeys.includes(id)) {
-            participantKeys.push(id);
-        }
-        let time = dataStorage[id]["timeStamp"] || [];
+    let data = getListOfParticipants(); // Returns current Name List of Participants
+    console.log(data);
+
+    // Loops through Participants list 
+    for (let name of data) {
+        let time = dataStorage[name] || [];
         time.push(currentTime);
-        timeStamp.push(currentTime);
-        dataStorage[id]["timeStamp"] = time;
+        dataStorage[name] = time;
+        if (!participantNames.includes(name)) {
+            participantNames.push(name);
+        }
     }
+    timeStamp.push(currentTime);
     console.log(dataStorage);
+}
+
+// Function to get Meeting ID
+function getMeetingId() {
+    let id = window.location.href;
+    id = id.split('/')[3];
+    if (id === "") {
+        console.log("Not a Meeting");
+        return false;
+    }
+    if (meetingId !== id) {
+        clearData();
+        console.log("New Meeting");
+    }
+    meetingId = id;
+    return true;
 }
 
 // Function to Start Monitoring
 function startMonitoring(time = 300000) {
     stopMonitoring();
+    // getMeetingId returns false if not a meeting
+    if (!getMeetingId()) {
+        console.log("Not Starting Service. Because it is not a Meeting.");
+        return false;
+    }
+    logParticipantsData(); // Logs data on Start
     interval_id = setInterval(function () {
-        logParticipantsData();
+        logParticipantsData(); // Logs data on Specific Intervel
     }, time);
     console.log('started');
 }
@@ -116,4 +137,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         clearData();
     }
     sendResponse("Received by Content Script");
-})
+});
