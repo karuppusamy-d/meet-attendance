@@ -2,7 +2,7 @@ console.log("Content script loaded");
 
 // Global Variables
 var dataStorage = {};       // Data Variable
-var participantKeys = [];   // For Key Storage
+var participantNames = [];   // For Key Storage
 var timeStamp = [];         // For Time Storage
 var interval_id;            // For start and stop Monitoring
 
@@ -23,8 +23,8 @@ $(document).keydown(function (event) {
 function getListOfParticipants() {
     let data = [];
     for (let i of $("[data-participant-id], [data-requested-participant-id]")) {
-        let id = (i.dataset.participantId || i.dataset.requestedParticipantId || i.dataset.initialParticipantId).split('/')[3].toString();
         let name = i.outerText || i.innerText;
+        // Skip if Name is You
         if (name == "You") {
             continue;
         }
@@ -77,7 +77,7 @@ function stopMonitoring() {
 
 // Function to send data
 function sendData() {
-    chrome.runtime.sendMessage({ action: "download", dataValues: dataStorage, dataKeys: participantKeys, timeValues: timeStamp }, res => {
+    chrome.runtime.sendMessage({ action: "download", dataValues: dataStorage, participantNames: participantNames, timeValues: timeStamp, meetingId: meetingId }, res => {
         console.log(res);
     });
     console.log('data sent');
@@ -86,7 +86,7 @@ function sendData() {
 // Function to clear dataStorage
 function clearData() {
     dataStorage = {};
-    participantKeys = [];
+    participantNames = [];
     timeStamp = [];
     console.log('cleared');
 }
