@@ -1,5 +1,3 @@
-console.log("Background Script loaded");
-
 // For Declearative Content
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
     chrome.declarativeContent.onPageChanged.addRules([{
@@ -13,11 +11,9 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
 
 // Event Listener
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    console.log("Data Received");
-    console.log(request);
+    console.log("Data Received", request);
     if (request.action === "download") {
         console.log("Download Section");
-        console.log(request.dataValues, request.participantNames, request.timeValues, request.meetingId);
         createDocument(request.dataValues, request.participantNames, request.timeValues, request.meetingId);
     }
     else {
@@ -33,11 +29,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 }
 );
 
-// Variable for Template
-var template = "";
 
 // function for HTML Creation
-function createDocument(dataValues, key, timeValues, meetingId) {
+async function createDocument(dataValues, key, timeValues, meetingId) {
+    var template = "";
     let now = new Date();
     let currentTime = now.getHours() + ':' + (now.getMinutes().toString());
     let currentDate = now.getFullYear() + '-' + (now.getMonth() + 1).toString() + '-' + now.getDate().toString();
@@ -67,11 +62,7 @@ function createDocument(dataValues, key, timeValues, meetingId) {
         tbody += '<tr>' + sn + name + tdata + '</tr>';
     }
 
-    if (template === "") {
-        getTemplate();
-        // TODO : Need Some Code For Waiting untill template loads
-    }
-    console.log("HTML creation started");
+    template = await getTemplate;
 
     template = template.replace('[%%title%%]', (currentDate + " " + currentTime));
     template = template.replace('[%%date%%]', currentDate);
@@ -79,9 +70,6 @@ function createDocument(dataValues, key, timeValues, meetingId) {
     template = template.replace('[%%meetID%%]', meetingId);
     template = template.replace('[%%tableHead%%]', thead);
     template = template.replace('[%%tableBody%%]', tbody);
-
-
-    console.log("Final Template created");
 
     filename = "attendance_" + currentDate + ".html";
     var blob = new Blob([template], { type: 'text/html;charset=utf-8' });
@@ -91,13 +79,14 @@ function createDocument(dataValues, key, timeValues, meetingId) {
         filename: filename
     });
 }
-var client;
-function getTemplate() {
-    client = new XMLHttpRequest();
+
+const getTemplate = new Promise((resolve, reject) => {
+    var client = new XMLHttpRequest();
     client.open('GET', '/background/template.html');
-    client.onreadystatechange = function () {
-        template = client.responseText;
-        console.log("Template created");
+    client.onreadystatechange = _ => {
+        if (client.readyState === 4) {
+            resolve(client.responseText);
+        }
     }
     client.send();
-}
+})

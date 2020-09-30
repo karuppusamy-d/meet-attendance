@@ -18,7 +18,7 @@
 
         header h2 {
             font-size: 3rem;
-			color: blue;
+            color: blue;
         }
 
         header h3 {
@@ -40,14 +40,16 @@
         #meetingId h3 {
             text-align: center;
             width: max-content;
+            color: deepskyblue;
         }
 
         /* Table Styles */
 
         .container {
-			width:100%;
-            margin: 1.5rem;
-            box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+            margin: auto;
+            margin-top: 2rem;
+            width: max-content;
+            box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
         }
 
         table {
@@ -63,7 +65,8 @@
 
         th,
         td {
-            width: max-content;
+            min-width: 3rem;
+            min-height: 3rem;
             white-space: nowrap;
             padding: 0.65rem;
             background-color: #81D4FA;
@@ -71,7 +74,7 @@
         }
 
         /* For Present and Absent */
-		
+
         .present {
             color: #00E676;
             background-color: rgb(251, 251, 255);
@@ -80,6 +83,10 @@
         .absent {
             color: #ff1744;
             background-color: rgb(255, 241, 241);
+        }
+
+        .thead :nth-child(2) {
+            min-width: 15rem;
         }
     </style>
 </head>
