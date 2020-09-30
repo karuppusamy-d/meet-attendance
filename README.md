@@ -19,8 +19,11 @@ This Extension is used to take attendance during online classes / Meetings.
 
 ## Screenshots
 
+
 <p align="center">
-<img src="./Sample/attendance_sample.png" width="100%" />
+<kbd>
+<img src="https://github.com/Karuppusamy-D/meet-attendance/raw/master/Sample/attendance_sample.png" width="100%" />
+</kbd>
 </p>
 
 ## Installation
