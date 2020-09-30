@@ -1,6 +1,29 @@
-# Google Meet Extension
-This is a simple chrome extension which is used to take attendance easily.
+# Meet Attendance
 
-It solves the problem of Taking attendance. It also makes muting audio/video easier. You can simpy press Spacebar to Mute/Unmute Audio and Ctrl+Spacebar to toggle Video.
+This Extension is used to take attendance during online classes / Meetings.
 
-It saves the attendance log as a html File.
+-   It saves the Attendance log as a HTML file.
+
+-   It also makes muting Audio / Video easier.
+
+-   You can simply press Spacebar to Mute / Unmute Audio and Ctrl + Spacebar to toggle Video.
+
+## Technologies used:
+
+-   JavaScript
+-   jQuery
+-   HTML
+-   CSS
+
+## Installation
+
+1. Clone the repository.
+1. Open the Extension Management page by navigating to chrome://extensions.
+
+-   The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
+
+1. Enable Developer Mode by clicking the toggle switch next to Developer mode.
+   Click the LOAD UNPACKED button and select the extension directory.
+
+1. The extension has been successfully installed. Now Install
+   [Google Meet Grid View](https://chrome.google.com/webstore/detail/google-meet-grid-view-fix/dakebdbeofhmlnmjlmhjdmmjmfohiicn) to log all participants data.
