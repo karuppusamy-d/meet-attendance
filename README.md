@@ -2,6 +2,8 @@
 
 This Extension is used to take attendance during online classes / Meetings.
 
+### Features
+
 -   It saves the Attendance log as a HTML file.
 
 -   It also makes muting Audio / Video easier.
