@@ -17,6 +17,12 @@ This Extension is used to take attendance during online classes / Meetings.
 -   HTML
 -   CSS
 
+## Screenshots
+
+<p align="center">
+<img src="./Sample/attendance_sample.png" width="100%" />
+</p>
+
 ## Installation
 
 1. Clone the repository.
