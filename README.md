@@ -22,7 +22,7 @@ This Extension is used to take attendance during online classes / Meetings.
 
 <p align="center">
 <kbd>
-<img src="https://github.com/Karuppusamy-D/meet-attendance/raw/master/Sample/attendance_sample.png" width="100%" />
+<img src="./Sample/attendance_sample.png" width="100%" />
 </kbd>
 </p>
 
