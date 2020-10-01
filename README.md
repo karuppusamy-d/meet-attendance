@@ -19,10 +19,21 @@ This Extension is used to take attendance during online classes / Meetings.
 
 ## Screenshots
 
+<p align="center">
+<kbd>
+<img src="./screenshots/attendance_sample.png" width="100%" />
+</kbd>
+</p>
 
 <p align="center">
 <kbd>
-<img src="./Sample/attendance_sample.png" width="100%" />
+<img src="./screenshots/1.png" width="100%" />
+</kbd>
+</p>
+
+<p align="center">
+<kbd>
+<img src="./screenshots/2.png" width="200px" />
 </kbd>
 </p>
 
