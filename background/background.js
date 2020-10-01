@@ -12,22 +12,20 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
 // Event Listener
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log("Data Received", request);
-    if (request.action === "download") {
-        console.log("Download Section");
+    if (request.dist === "background") {
         createDocument(request.dataValues, request.participantNames, request.timeValues, request.meetingId);
+        sendResponse("Received by background script");
     }
-    else {
+    else if (request.dist === "content") {
         // To send back your response  to the current tab
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             chrome.tabs.sendMessage(tabs[0].id, request, function (response) {
                 console.log(response);
             });
-
         })
+        sendResponse("Received by background script");
     }
-    sendResponse("Done");
-}
-);
+});
 
 
 // function for HTML Creation

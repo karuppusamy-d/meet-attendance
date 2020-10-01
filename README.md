@@ -27,7 +27,7 @@ This Extension is used to take attendance during online classes / Meetings.
 
 <p align="center">
 <kbd>
-<img src="./screenshots/1.png" width="100%" />
+<img src="./screenshots/1.png" width="200px" />
 </kbd>
 </p>
 

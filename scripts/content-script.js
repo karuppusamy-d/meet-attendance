@@ -96,9 +96,9 @@ function stopMonitoring() {
     console.log('stoped');
 }
 
-// Function to send data
+// Function to send data to Background script
 function sendData() {
-    chrome.runtime.sendMessage({ action: "download", dataValues: dataStorage, participantNames: participantNames, timeValues: timeStamp, meetingId: meetingId }, res => {
+    chrome.runtime.sendMessage({ dist: "background", dataValues: dataStorage, participantNames: participantNames, timeValues: timeStamp, meetingId: meetingId }, res => {
         console.log(res);
     });
     console.log('data sent');
@@ -114,27 +114,45 @@ function clearData() {
 
 
 // Event Listiner
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log(request);
-    let action = request.action;
-    if (action === "start") {
-        let delay = request.delay;
-        delay = parseInt(delay);
-        if (isNaN(delay)) {
-            delay = 5;
-        }
-        let t_mil = delay * 60000;
+chrome.runtime.onMessage.addListener((request, sender, response) => {
+    if (request.dist === "content") {
+        console.log(request);
+        if (getMeetingId()) {
+            let action = request.action;
+            if (action === "start") {
+                let delay = request.delay;
+                delay = parseInt(delay);
+                if (isNaN(delay)) {
+                    delay = 5;
+                }
+                let t_mil = delay * 60000;
 
-        startMonitoring(t_mil);
+                startMonitoring(t_mil);
+                sendResponse("Started");
+            }
+            else if (action === "stop") {
+                stopMonitoring();
+                sendResponse("Stopped");
+            }
+            else if (action === "save") {
+                sendData();
+                sendResponse("Downloading");
+            }
+            else if (action == "clear") {
+                clearData();
+                sendResponse("Cleared");
+            }
+        }
+        else {
+            sendResponse("Not a Meeting");
+        }
+        response("Received by Content Script");
     }
-    else if (action === "stop") {
-        stopMonitoring();
-    }
-    else if (action === "save") {
-        sendData();
-    }
-    else if (action == "reset") {
-        clearData();
-    }
-    sendResponse("Received by Content Script");
 });
+
+// Function to send data to Popup
+function sendResponse(data) {
+    chrome.runtime.sendMessage({ dist: "popup", data: data }, (res) => {
+        console.log(res);
+    });
+}
