@@ -1,3 +1,4 @@
+
 # Meet Attendance
 
 This Extension is used to take attendance during online classes / Meetings.
@@ -29,10 +30,10 @@ This Extension is used to take attendance during online classes / Meetings.
 
 <p align = "center">
 <kbd width="100%">
-<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/1.png?raw=true",width="20%" />
-<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/2.png?raw=true",width="20%" />
-<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/3.png?raw=true",width="20%" />
-<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/4.png?raw=true",width="20%" />
+<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/1.png?raw=true",width="50%" />
+<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/2.png?raw=true",width="50%" />
+<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/3.png?raw=true",width="50%" />
+<img src="https://github.com/Karuppusamy-D/meet-attendance/blob/master/screenshots/4.png?raw=true",width="50%" />
 </kbd>
 </p>
 
