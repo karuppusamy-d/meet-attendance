@@ -27,13 +27,27 @@ This Extension is used to take attendance during online classes / Meetings.
 </kbd>
 </p>
 
+<p align="center">
+<kbd>
+<img src="./screenshots/1.png" width="200px" />
+</kbd>
+</p>
 
-<p align = "center">
-<kbd width="100%">
-<img src="./screenshots/1.png" ,width="45%"/>&nbsp;
-<img src="./screenshots/2.png" ,width="45%"/>&nbsp;
-<img src="./screenshots/3.png",width="45%" />&nbsp;
-<img src="./screenshots/4.png",width="45%" />&nbsp;
+<p align="center">
+<kbd>
+<img src="./screenshots/2.png" width="200px" />
+</kbd>
+</p>
+
+<p align="center">
+<kbd>
+<img src="./screenshots/3.png" width="200px" />
+</kbd>
+</p>
+
+<p align="center">
+<kbd>
+<img src="./screenshots/4.png" width="200px" />
 </kbd>
 </p>
 
