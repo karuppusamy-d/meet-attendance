@@ -1,37 +1,45 @@
-## Welcome to GitHub Pages
+# Meet Attendance
 
-You can use the [editor on GitHub](https://github.com/Karuppusamy-D/meet-attendance/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This Extension is used to take attendance during online classes / Meetings.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Features
 
-### Markdown
+-   It saves the Attendance log as a HTML file.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+-   It also makes muting Audio / Video easier.
 
-```markdown
-Syntax highlighted code block
+-   You can simply press Spacebar to Mute / Unmute Audio and Ctrl + Spacebar to toggle Video.
 
-# Header 1
-## Header 2
-### Header 3
+## Technologies used:
 
-- Bulleted
-- List
+-   JavaScript
+-   jQuery
+-   HTML
+-   CSS
 
-1. Numbered
-2. List
+## Screenshots
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+<p align="center">
+<kbd>
+<img src="./screenshots/attendance_sample.png" width="100%" />
+</kbd>
+</p>
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+<p align="center">
+<kbd>
+<img src="./screenshots/1.png" width="200px" />
+</kbd>
+</p>
 
-### Jekyll Themes
+## Installation
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Karuppusamy-D/meet-attendance/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. Clone the repository.
+1. Open the Extension Management page by navigating to chrome://extensions.
+   - The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 
-### Support or Contact
+1. Enable Developer Mode by clicking the toggle switch next to Developer mode.
+   Click the LOAD UNPACKED button and select the extension directory.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+1. The extension has been successfully installed. Now Install
+   [Google Meet Grid View](https://chrome.google.com/webstore/detail/google-meet-grid-view-fix/dakebdbeofhmlnmjlmhjdmmjmfohiicn) to log all participants data.
