@@ -1,7 +1,7 @@
 
 # Meet Attendance
 
-It is a chrome/edge extension that logs attendance during online classes/meetings in Google Meet. It monitors all participants between the set interval and outputs data as an HTML file.
+It is a Chrome / Edge extension that logs attendance during online meetings in Google Meet. It monitors all participants between the set interval and outputs data as an HTML file. It also has keyboard shortcuts to toggle the mic and camera.
 
 ### Features
 
