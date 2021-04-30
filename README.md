@@ -1,7 +1,7 @@
 
 # Meet Attendance
 
-This Extension is used to take attendance during online classes / Meetings.
+It is a chrome/edge extension that logs attendance during online classes/meetings in Google Meet. It monitors all participants between the set interval and outputs data as an HTML file.
 
 ### Features
 
