@@ -28,7 +28,6 @@ function logParticipantsData() {
   let now = new Date();
   let currentTime = now.getHours() + ":" + now.getMinutes().toString();
   let data = getListOfParticipants(); // Returns current Name List of Participants
-  console.log(data);
 
   // Loops through Participants list
   for (let name of data) {
@@ -40,20 +39,22 @@ function logParticipantsData() {
     }
   }
   timeStamp.push(currentTime);
-  console.log(dataStorage);
 }
 
 // Function to get Meeting ID
 function getMeetingId() {
+  // Get Meeting ID
   let id = window.location.href;
   id = id.split("/")[3];
-  if (id === "") {
-    console.log("Not a Meeting");
+
+  // If meeting id is not found
+  if (!id) {
     return false;
   }
+
+  // Clear Meeting ID if meeting is changed
   if (meetingId !== id) {
     clearData();
-    console.log("New Meeting");
   }
   meetingId = id;
   return true;
@@ -64,14 +65,13 @@ function startMonitoring(time = 300000) {
   stopMonitoring();
   // getMeetingId returns false if not a meeting
   if (!getMeetingId()) {
-    console.log("Not Starting Service. Because it is not a Meeting.");
     return false;
   }
-  logParticipantsData(); // Logs data on Start
+  // Log Participants data with TimeStamp on specified interval
+  logParticipantsData();
   interval_id = setInterval(function () {
-    logParticipantsData(); // Logs data on Specific Intervel
+    logParticipantsData();
   }, time);
-  console.log("started");
 }
 
 // Function to Stop Monitoring
@@ -80,24 +80,17 @@ function stopMonitoring() {
     clearInterval(interval_id);
     interval_id = undefined;
   }
-  console.log("stoped");
 }
 
 // Function to send data to Background script
 function sendData() {
-  chrome.runtime.sendMessage(
-    {
-      dist: "background",
-      dataValues: dataStorage,
-      participantNames: participantNames,
-      timeValues: timeStamp,
-      meetingId: meetingId,
-    },
-    (res) => {
-      console.log(res);
-    }
-  );
-  console.log("data sent");
+  chrome.runtime.sendMessage({
+    dist: "background",
+    dataValues: dataStorage,
+    participantNames: participantNames,
+    timeValues: timeStamp,
+    meetingId: meetingId,
+  });
 }
 
 // Function to clear dataStorage
@@ -105,13 +98,11 @@ function clearData() {
   dataStorage = {};
   participantNames = [];
   timeStamp = [];
-  console.log("cleared");
 }
 
 // Event Listiner
 chrome.runtime.onMessage.addListener((request, sender, response) => {
   if (request.dist === "content") {
-    console.log(request);
     if (getMeetingId()) {
       let action = request.action;
       if (action === "start") {
@@ -143,7 +134,5 @@ chrome.runtime.onMessage.addListener((request, sender, response) => {
 
 // Function to send data to Popup
 function sendResponse(data) {
-  chrome.runtime.sendMessage({ dist: "popup", data: data }, (res) => {
-    console.log(res);
-  });
+  chrome.runtime.sendMessage({ dist: "popup", data: data });
 }

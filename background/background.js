@@ -14,7 +14,6 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
 
 // Event Listener
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log("Data Received", request);
   if (request.dist === "background") {
     createDocument(
       request.dataValues,
@@ -26,9 +25,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   } else if (request.dist === "content") {
     // To send back your response  to the current tab
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, request, function (response) {
-        console.log(response);
-      });
+      chrome.tabs.sendMessage(tabs[0].id, request);
     });
     sendResponse("Received by background script");
   }
@@ -38,13 +35,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 async function createDocument(dataValues, key, timeValues, meetingId) {
   var template = "";
   let now = new Date();
-  let currentTime = now.getHours() + ":" + now.getMinutes().toString();
-  let currentDate =
-    now.getFullYear() +
-    "-" +
-    (now.getMonth() + 1).toString() +
-    "-" +
-    now.getDate().toString();
+  let currentTime = now.toLocaleTimeString("en-US", { time: "medium" });
+  let currentDate = now.toLocaleDateString("en-IN", { dateStyle: "medium" });
 
   var thead = "";
   var tbody = "";

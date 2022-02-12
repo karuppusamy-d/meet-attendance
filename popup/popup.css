@@ -19,12 +19,19 @@ button {
   margin: 0.5rem;
   border: none;
   color: cornsilk;
-  background-color: #0d0dda;
+  background-color: hsl(240, 90%, 45%);
+  transition-duration: 300ms;
 }
 
-button:focus {
+button:hover {
   outline: none;
-  background-color: #4d4dff;
+  background-color: hsl(240, 90%, 55%);
+}
+
+button:active {
+  transition-duration: 0ms;
+  outline: none;
+  background-color: hsl(240, 90%, 65%);
 }
 
 .status-wrapper {

@@ -7,7 +7,6 @@ $(document).on("click", "#start, #stop, #save, #clear", (e) => {
   chrome.runtime.sendMessage(
     { dist: "content", action: e.target.id, delay: delay },
     (res) => {
-      console.log(res);
       if (!res) {
         $(".status")[0].innerText = "Error Connecting";
       }
