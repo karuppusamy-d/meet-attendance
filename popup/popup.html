@@ -1,23 +1,26 @@
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Google Meet Extension</title>
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="popup.css" />
+  </head>
 
-</head>
-
-<body>
-    <div>Time: <span id="timeText">5</span></div>
-    <input id="time" type="range" min="1" max="100" value="5">
+  <body>
+    <div>Time: <span id="timeText">5</span>m</div>
+    <input id="time" type="range" min="1" max="100" value="5" />
 
     <button id="start">Start Capturing</button>
     <button id="stop">Stop Capturing</button>
     <button id="save">Save</button>
     <button id="clear">Clear</button>
 
-    <script type="text/javascript" src="../scripts/jquery-3.5.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../scripts/jquery-3.5.1.min.js"
+    ></script>
     <script type="text/javascript" src="popup.js"></script>
-    <div class="status-wrapper">Status : <span class="status">Stopped</span></div>
-
+    <div class="status-wrapper">
+      Status : <span class="status">Stopped</span>
+    </div>
+  </body>
 </html>

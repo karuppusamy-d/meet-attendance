@@ -1,300 +1,296 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>2020-9-30 20:3</title>
     <style>
-        body {
-            background-color: #fff;
-        }
+      body {
+        background-color: #fff;
+      }
 
-        /* Header Styles */
+      /* Header Styles */
 
-        header {
-            text-align: center;
-            width: 100%;
-        }
+      header {
+        text-align: center;
+        width: 100%;
+      }
 
-        header h2 {
-            font-size: 3rem;
-            color: blue;
-        }
+      header h2 {
+        font-size: 3rem;
+        color: hsl(200, 100%, 50%);
+      }
 
-        header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: inline-block;
-            width: 45%;
-            margin: 0px;
-        }
+      header h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: inline-block;
+        width: 45%;
+        margin: 0px;
+      }
 
-        #date {
-            text-align: left;
-        }
+      #date {
+        text-align: left;
+      }
 
-        #time {
-            text-align: right;
-        }
+      #time {
+        text-align: right;
+      }
 
-        #meetingId h3 {
-            text-align: center;
-            width: max-content;
-            color: deepskyblue;
-        }
+      #meetingId h3 {
+        text-align: center;
+        width: max-content;
+        color: hsl(200, 100%, 50%);
+      }
 
-        /* Table Styles */
+      /* Table Styles */
 
-        .container {
-            margin: auto;
-            margin-top: 2rem;
-            width: max-content;
-            box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
-        }
+      .container {
+        margin: auto;
+        margin-top: 2rem;
+        width: max-content;
+        box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
+      }
 
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: separate;
-            width: 100%;
-            background: #000;
-            /* Align table to center */
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: separate;
+        width: 100%;
+        background: #000;
+        /* Align table to center */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
 
-        th,
-        td {
-            min-width: 3rem;
-            min-height: 3rem;
-            white-space: nowrap;
-            padding: 0.65rem;
-            background-color: #81D4FA;
-            font-weight: bold;
-        }
+      th,
+      td {
+        min-width: 3rem;
+        min-height: 3rem;
+        white-space: nowrap;
+        padding: 0.65rem;
+        background-color: hsl(200, 100%, 75%);
+        font-weight: bold;
+      }
 
-        /* For Present and Absent */
+      /* For Present and Absent */
 
-        .present {
-            color: #00E676;
-            background-color: rgb(251, 251, 255);
-        }
+      .present {
+        color: #00e676;
+        background-color: rgb(251, 251, 255);
+      }
 
-        .absent {
-            color: #ff1744;
-            background-color: rgb(255, 241, 241);
-        }
+      .absent {
+        color: #ff1744;
+        background-color: rgb(255, 241, 241);
+      }
 
-        .thead :nth-child(2) {
-            min-width: 15rem;
-        }
+      .thead :nth-child(2) {
+        min-width: 15rem;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header>
-        <h2>Google Meet Attendance</h2>
-        <div>
-            <span id="date">
-                <h3>Time:2020-9-30</h3>
-            </span>
-            <span id="time">
-                <h3>Time:20:3</h3>
-            </span>
-            <div id="meetingId">
-                <h3>Meeting ID: hij-defg-cba</h3>
-            </div>
+      <h2>Google Meet Attendance</h2>
+      <div>
+        <span id="date">
+          <h3>Time:2020-9-30</h3>
+        </span>
+        <span id="time">
+          <h3>Time:20:3</h3>
+        </span>
+        <div id="meetingId">
+          <h3>Meeting ID: hij-defg-cba</h3>
         </div>
+      </div>
     </header>
 
     <section class="container">
-        <table class="table">
-            <thead>
-                <tr class="thead">
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>19:52</th>
-                    <th>19:53</th>
-                    <th>19:54</th>
-                    <th>19:55</th>
-                    <th>19:56</th>
-                    <th>19:57</th>
-                    <th>19:58</th>
-                    <th>19:59</th>
-                    <th>20:0</th>
-                    <th>20:1</th>
-                    <th>20:2</th>
-                </tr>
-            </thead>
-            <tbody class="tbody">
-                <tr>
-                    <td>1</td>
-                    <td>Karuppusamy</td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Manikandan</td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Madhan</td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Santhosh</td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Devendran</td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="present">
-                        <p>P</p>
-                    </td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                    <td class="absent">A</td>
-                </tr>
-            </tbody>
-        </table>
+      <table class="table">
+        <thead>
+          <tr class="thead">
+            <th>S.No</th>
+            <th>Name</th>
+            <th>19:52</th>
+            <th>19:53</th>
+            <th>19:54</th>
+            <th>19:55</th>
+            <th>19:56</th>
+            <th>19:57</th>
+            <th>19:58</th>
+            <th>19:59</th>
+            <th>20:0</th>
+            <th>20:1</th>
+            <th>20:2</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr>
+            <td>1</td>
+            <td>Karuppusamy</td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Manikandan</td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Madhan</td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Santhosh</td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Devendran</td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="present">
+              <p>P</p>
+            </td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+            <td class="absent">A</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-
-</body>
-
+  </body>
 </html>
