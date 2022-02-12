@@ -5,18 +5,6 @@ var timeStamp = []; // For Time Storage
 var interval_id; // For start and stop Monitoring
 var meetingId; // For storing Meeting ID
 
-// For Push to Talk Feature
-$(document).keydown(function (event) {
-  // var keycode = (event.keyCode ? event.keyCode : event.which);
-  if (event.which == 32) {
-    if (event.ctrlKey) {
-      $("div[data-tooltip*='camera']").click();
-    } else {
-      $("div[data-tooltip*='microphone']").click();
-    }
-  }
-});
-
 // Function to Fetch List of Participants
 function getListOfParticipants() {
   let data = [];
